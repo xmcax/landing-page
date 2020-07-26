@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+<nav class="main-nav" th:fragment="menu(activePage)">
+    <ul class="main-nav__wrapper">
+        <li>
+            <a class="main-nav__item"
+               href="./page_1"
+               th:classappend="${activePage == 'page_1'} ? 'main-nav__item--active'">Page 1</a>
+        </li>
+        <li>
+            <a class="main-nav__item"
+               href="./page_2"
+               th:classappend="${activePage == 'page_2'} ? 'main-nav__item--active'">Page 2</a>
+        </li>
+        <li>
+            <a class="main-nav__item"
+               href="./page_3"
+               th:classappend="${activePage == 'page_3'} ? 'main-nav__item--active'">Page 3</a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

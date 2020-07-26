@@ -1,0 +1,29 @@
+@import '../abstracts/colors';
+
+.main-nav {
+  margin-bottom: 20px;
+  &__wrapper {
+    display: flex;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: block;
+
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      background-color: $light_grey;
+    }
+
+    &--active {
+      font-weight: bold;
+    }
+  }
+}
+

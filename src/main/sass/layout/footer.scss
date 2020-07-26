@@ -1,0 +1,12 @@
+@import '../abstracts/variables';
+@import '../abstracts/colors';
+
+footer.main {
+  background-color: $light_grey;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  min-height: $footer-height;
+  width: 100%;
+  overflow: hidden;
+}

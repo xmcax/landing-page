@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'com.github.salomonbrys.gradle.sass' version '1.2.0'
+}
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+mainClassName = 'pl.adamnowicki.landingpage.application.Main'
+
+dependencies {
+    implementation 'org.slf4j:slf4j-simple:1.7.21'
+    implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
+    implementation 'com.sparkjava:spark-core:2.9.1'
+    implementation 'com.sparkjava:spark-template-thymeleaf:2.7.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.3.1'
+    testImplementation 'org.hamcrest:hamcrest-library:2.1'
+    testImplementation 'org.assertj:assertj-core:3.9.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+application {
+    mainClass = 'pl.adamnowicki.landingpage.application.Main'
+}
+
+processResources {
+    with copySpec {
+        from "${buildDir}/sass"
+        include "**/*.css"
+        into "static"
+    }
+}
+
+processResources.dependsOn sassCompile
