@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Page 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div th:replace="menu :: menu('page_1')"></div>
-    <div id="page_1">
+    <div id="page_1" class="main-page">
         <h1>Page 1</h1>
     </div>
     <div th:replace="footer :: footer"></div>

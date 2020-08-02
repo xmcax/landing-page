@@ -1,19 +1,49 @@
 @import '../abstracts/colors';
 
-.main-nav {
+$name: '.main-nav';
+$mobile-max-width: 600px;
+$bar-width: 35px;
+$bar-height: 5px;
+$bar-height-spacing: 6px;
+$menu-padding: 20px;
+
+@mixin collapsed {
+  transition: 0.4s;
+  opacity: 0;
+  height: 0;
+  padding: 0 $menu-padding;
+  overflow: hidden;
+}
+
+@mixin expanded {
+  opacity: 1;
+  height: auto;
+  padding: $menu-padding;
+}
+
+#{$name} {
   margin-bottom: 20px;
+
+  overflow: hidden;
+
   &__wrapper {
     display: flex;
+    flex-direction: row;
 
     list-style: none;
     margin: 0;
     padding: 0;
+
+    @media screen and (max-width: $mobile-max-width) {
+      flex-direction: column;
+      background-color: $light_grey;
+    }
   }
 
   &__item {
     display: block;
 
-    padding: 20px;
+    padding: $menu-padding;
     text-decoration: none;
     color: black;
 
@@ -24,6 +54,56 @@
     &--active {
       font-weight: bold;
     }
+
+    @media screen and (max-width: $mobile-max-width) {
+      @include collapsed;
+
+      #{$name}--expanded & {
+        @include expanded;
+      }
+    }
   }
+
+  &__icon {
+    display: none;
+
+    padding: 10px;
+    float: right;
+    width: $bar-width;
+    height: 3*$bar-height+4*$bar-height-spacing;
+
+    cursor: pointer;
+
+    @media screen and (max-width: $mobile-max-width) {
+      display: inline-block;
+    }
+
+    .bar1, .bar2, .bar3 {
+      width: $bar-width;
+      height: $bar-height;
+      background-color: #333;
+      margin: $bar-height-spacing 0;
+      transition: 0.4s;
+    }
+
+    #{$name}--expanded & {
+
+      .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        transform: rotate(-45deg) translate(-9px, 6px);
+      }
+
+      .bar2 {
+        opacity: 0;
+      }
+
+      .bar3 {
+        -webkit-transform: rotate(45deg) translate(-8px, -8px);
+        transform: rotate(45deg) translate(-8px, -8px);
+      }
+    }
+  }
+
 }
+
 

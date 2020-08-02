@@ -5,10 +5,19 @@
     <title>Menu</title>
 </head>
 <body>
-<nav class="main-nav" th:fragment="menu(activePage)">
+<nav class="main-nav" id="main-nav-id" th:fragment="menu(activePage)">
     <ul class="main-nav__wrapper">
         <li>
-            <a class="main-nav__item"
+            <a class="main-nav__icon"
+               href="javascript:void(0);"
+               onclick="onClickMobileMenu()">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </a>
+        </li>
+        <li>
+            <a class="main-nav__item main-nav__item--mobile"
                href="./page_1"
                th:classappend="${activePage == 'page_1'} ? 'main-nav__item--active'">Page 1</a>
         </li>
@@ -23,6 +32,16 @@
                th:classappend="${activePage == 'page_3'} ? 'main-nav__item--active'">Page 3</a>
         </li>
     </ul>
+    <script>
+        function onClickMobileMenu() {
+            const x = document.getElementById("main-nav-id");
+
+            x.className === "main-nav"
+                ? x.className = "main-nav main-nav--expanded"
+                : x.className = "main-nav";
+        }
+    </script>
+
 </nav>
 </body>
 </html>

@@ -33,6 +33,7 @@ processResources {
     with copySpec {
         from "${buildDir}/sass"
         include "**/*.css"
+        include "**/*.css.map"
         into "static"
     }
 }
